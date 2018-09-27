@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flowchart</title>
+<meta name="description" content="Workflow Manager" />
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-sanitize.js"></script>
+	<script type="text/javascript" src="scripts/dist/tv4.js"></script>
+<script type="text/javascript" src="scripts/dist/ObjectPath.js"></script>
+<script type="text/javascript" src="scripts/dist/angular-schema-form.min.js"></script>
+<script type="text/javascript" src="scripts/dist/angular-schema-form-bootstrap.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.8.29/go.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
+
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/directives.js"></script>
+<script type="text/javascript" src="scripts/services.js"></script>
+<script type="text/javascript" src="scripts/controllers.js"></script>
+</head>
+<body ng-app="WorkflowManager">
+<div ng-controller="DiagramCtrl" ng-init="init();">
+<div id="sample">
+  <div style="width: 100%; display: flex; justify-content: space-between">
+    <div id="myPaletteDiv" style="width: 100px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+    <div id="myDiagramDiv" style="flex-grow: 1; height: 750px; border: solid 1px black"></div>
+  </div>
+  
+  <button id="SaveButton" onclick="save()">Save</button>
+  <button onclick="load()">Load</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+  Diagram Model saved in JSON format:
+  <pre id="mySavedModel" style="width:100%;height:300px" ng-bind-html="workflow|json">
+
+  </pre>
+  <button onclick="printDiagram()">Print Diagram Using SVG</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body" id="modalContent">
+        <div>
+        <div>
+ <div class="jumbotron"><input type="file" file-model = "myFile"/> <button ng-click = "uploadFile()">upload me</button></div>
+ &nbsp;
+ <div class="alert alert-danger fade in"><a class="close" href="#" data-dismiss="alert">×</a> <strong>Errors!</strong> {{errors.value}}</div>
+ </div>
+       {{ content | json }}
+       
+        </div>
+      
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>
