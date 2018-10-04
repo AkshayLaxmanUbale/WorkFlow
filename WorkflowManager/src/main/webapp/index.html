@@ -55,6 +55,20 @@
  &nbsp;
  <div class="alert alert-danger fade in"><a class="close" href="#" data-dismiss="alert">×</a> <strong>Errors!</strong> {{errors.value}}</div>
  </div>
+ <div ng-controller="FormController">
+<div class="row">
+<div class="col-md-4">
+<div class="container-fluid">
+  <form name="myForm"
+          sf-schema="schema"
+          sf-form="form"
+          sf-model="model"
+          ng-submit="onSubmit(myForm)"></form>
+</div>
+</div>
+<div class="col-md-6"></div>
+</div>
+</div>
        {{ content | json }}
        
         </div>

@@ -1,3 +1,48 @@
+
+app.controller('FormController', function($scope,$http, $location) {
+  $scope.schema=null;
+  $scope.form=[];
+
+   /*[
+    "*",
+    {
+      type: "submit",
+      title: "Save"
+    }
+  ];*/
+  $scope.loadData= function(formName){
+    $http.get(formName)
+    .then(function onSuccess(response){
+      $scope.schema=response.data.schema;
+      $scope.form=response.data.form;
+    },
+    function onError(response){
+        alert(response.status+"")
+    }
+    )
+  };
+  $scope.loadData("https://api.myjson.com/bins/lbzsc");
+$scope.onSubmit = function(form) {
+    // First we broadcast an event so all fields validate themselves
+    $scope.$broadcast('schemaFormValidate');
+
+    // Then we check if the form is valid
+    if (form.$valid) {
+	      alert("submitted");
+    }
+  }
+  $scope.model = {};
+  $scope.onSubmit = function(form) {
+    // First we broadcast an event so all fields validate themselves
+    $scope.$broadcast('schemaFormValidate');
+
+    // Then we check if the form is valid
+    if (form.$valid) {
+      // ... do whatever you need to do with your data.
+      alert("Success");
+    }
+  }
+})
 app.controller('DiagramCtrl',['$scope', '$q', 'fileUpload', function($scope,$http,$location,fileUpload) {
   $scope.schema=null;
   $scope.form=[];
@@ -22,42 +67,7 @@ $scope.workflow={ "class": "go.GraphLinksModel",
 $scope.json=JSON.stringify($scope.workflow, undefined, 4);
 $scope.content=$scope.json;
 
-/*
 
-
-  $scope.loadData= function(formName){
-    $http.get(formName)
-    .then(function onSuccess(response){
-      $scope.schema=response.data.schema;
-      $scope.form=response.data.form;
-    },
-    function onError(response){
-        alert(response.status+"")
-    }
-    )
-  };
-  $scope.loadData("https://api.myjson.com/bins/lbzsc");
-$scope.onSubmit = function(form) {
-    // First we broadcast an event so all fields validate themselves
-    $scope.$broadcast('schemaFormValidate');
-
-    // Then we check if the form is valid
-    if (form.$valid) {
-      // ... do whatever you need to do with your data.
-    }
-  }
-  $scope.model = {};
-  $scope.onSubmit = function(form) {
-    // First we broadcast an event so all fields validate themselves
-    $scope.$broadcast('schemaFormValidate');
-
-    // Then we check if the form is valid
-    if (form.$valid) {
-      // ... do whatever you need to do with your data.
-      alert("Success");
-    }
-  }
-  */
 	  // Show the diagram's model in JSON format that the user may edit
 	  function save() {
 	    $scope.workflow = $scope.myDiagram.model.toJson();
