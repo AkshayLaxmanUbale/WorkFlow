@@ -9,12 +9,11 @@
 	<name>WorkflowManager Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<!-- Neo4j dependency -->
-		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-neo4j -->
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
 		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-neo4j</artifactId>
-			<version>5.0.10.RELEASE</version>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
