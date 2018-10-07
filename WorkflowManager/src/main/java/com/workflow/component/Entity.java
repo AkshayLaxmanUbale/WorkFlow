@@ -1,4 +1,4 @@
-package com.predii.component;
+package com.workflow.component;
 
 import java.util.HashMap;
 import java.util.Iterator;

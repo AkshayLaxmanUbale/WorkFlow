@@ -1,4 +1,4 @@
-package com.predii.controller;
+package com.workflow.controller;
 
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -33,7 +33,7 @@ public class FIleUploadController {
 				MultipartFile mFile = mRequest.getFile((String)itr.next());
 				String fileName = mFile.getOriginalFilename();
 				System.out.println(fileName);
-				java.nio.file.Path path = Paths.get("C:/Data/DemoUpload/" + filename);
+				java.nio.file.Path path = Paths.get("/uploadContent/" + filename);
 				Files.deleteIfExists(path);
 				InputStream in = mFile.getInputStream();
 				Files.copy(in, path);
@@ -43,5 +43,6 @@ public class FIleUploadController {
 		}
 		return new ResponseEntity<String>("File Uploaded successfully",HttpStatus.OK);
 	}
+
 
 }

@@ -8,19 +8,19 @@ app.service('fileUpload', ['$q','$http', function ($q,$http) {
 	 return $http.post(uploadUrl, fd, {
 	 transformRequest: angular.identity,
 	 headers: { 'Content-Type' : undefined}
-	 })
-	 .success(function(response){
+	 }).then(
+	 function success(response){
 	/* $scope.errors = response.data.value; */
 	   console.log(response);
 	   responseData = response;
 	   deffered.resolve(response);
 	   return deffered.promise;
-	   })
-	   .error(function(error){
+	   },
+	   function onError(error){
 	   deffered.reject(error);
 	   return deffered.promise;
 	   });
-	}
+	};
 	this.getResponse = function() {
 	 return responseData;
 	 }

@@ -1,6 +1,8 @@
-package com.predii.component;
+package com.workflow.component;
+
 
 import org.bson.Document;
+
 import com.mongodb.MongoClient;
 import com.mongodb.client.*;
 
@@ -19,7 +21,7 @@ public class MongoWriter implements Component{
 	}
 
 	@Override
-	public boolean preProcess(Entity config) {
+	public boolean init(Entity config) {
 		mongo = new MongoClient((String)config.getObjectByName("host"),(Integer)config.getObjectByName("port"));
 		db = mongo.getDatabase((String)config.getObjectByName("DBName"));
 		collection = db.getCollection((String)config.getObjectByName("CollectionName"));

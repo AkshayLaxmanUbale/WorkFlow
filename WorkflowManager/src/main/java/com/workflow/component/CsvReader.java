@@ -1,4 +1,4 @@
-package com.predii.component;
+package com.workflow.component;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class CsvReader implements Component{
 	String[] headers;
 	
 	@Override
-	public boolean preProcess(Entity config) {
+	public boolean init(Entity config) {
 		csvFilePath = (String) config.getObjectByName("filepath"); 
 		try {
 			reader = new CSVReader(new FileReader(csvFilePath));

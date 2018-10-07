@@ -1,4 +1,4 @@
-package com.predii.component;
+package com.workflow.component;
 
 public class App {
 	public static void main(String[] args) {
@@ -6,7 +6,7 @@ public class App {
 		con.addKeyValue("filepath", "temp.csv");
 		
 		CsvReader csv = new CsvReader();
-		csv.preProcess(con);
+		csv.init(con);
 		
 		Entity mongocon = new Entity();
 		mongocon.addKeyValue("host", "localhost");
@@ -15,7 +15,7 @@ public class App {
 		mongocon.addKeyValue("CollectionName", "Numbers");
 		
 		MongoWriter mw = new MongoWriter();
-		mw.preProcess(mongocon);
+		mw.init(mongocon);
 		
 		Entity out;
 		

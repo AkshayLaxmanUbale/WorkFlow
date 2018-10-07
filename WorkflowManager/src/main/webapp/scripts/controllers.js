@@ -43,7 +43,7 @@ $scope.onSubmit = function(form) {
     }
   }
 })
-app.controller('DiagramCtrl',['$scope', '$q', 'fileUpload', function($scope,$http,$location,fileUpload) {
+app.controller('DiagramCtrl',['$scope', 'fileUpload','$q' , function($scope,fileUpload,$http,$location) {
   $scope.schema=null;
   $scope.form=[];
 $scope.workflow={ "class": "go.GraphLinksModel",
@@ -365,7 +365,7 @@ $scope.content=$scope.json;
 		      var file = $scope.myFile;
 		      console.log('file is ' );
 		      console.dir(file);
-		       var uploadUrl = "WorkflowManager/FileUpload";
+		       var uploadUrl = "/WorkflowManager/uploadfile";
 		       console.log(fileUpload);
 		        fileUpload.uploadFileToUrl(file, uploadUrl).then(function(result){
 		        $scope.errors = fileUpload.getResponse();
