@@ -1,7 +1,10 @@
 package com.workflow.service;
 
+import org.springframework.stereotype.Service;
+
 import com.workflow.component.*;
 
+@Service("helper")
 public class Helper {
 	
 	public Component getObjectByClassName(String classname) {

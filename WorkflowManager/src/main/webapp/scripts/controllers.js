@@ -21,7 +21,7 @@ app.controller('FormController', function($scope,$http, $location) {
     }
     )
   };
-  $scope.loadData("https://api.myjson.com/bins/1ct6a4");
+  $scope.loadData("https://api.myjson.com/bins/rqn6k");
 $scope.onSubmit = function(form) {
     // First we broadcast an event so all fields validate themselves
     $scope.$broadcast('schemaFormValidate');
