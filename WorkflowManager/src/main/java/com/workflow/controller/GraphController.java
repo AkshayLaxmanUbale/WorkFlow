@@ -26,4 +26,9 @@ public class GraphController {
 	public boolean createWorkflow(@RequestBody String name) {
 		return graphService.newWorkflow(name);
 	}
+	
+	@RequestMapping(value="/open", method=RequestMethod.POST, headers = "Accept=application/json")
+	public JSONObject getWorkflow(@RequestBody String name) {
+		return graphService.getWorkflow(name);
+	}
 }

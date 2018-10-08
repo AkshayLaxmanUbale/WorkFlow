@@ -3,6 +3,11 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+<<<<<<< HEAD
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp/files"/>
+>>>>>>> cb0aca622520751ce71694a6f4bb433812bbc2f4
         <property name="context-root" value="WorkflowManager"/>
         <property name="java-output-path" value="/WorkflowManager/target/classes"/>
     </wb-module>
