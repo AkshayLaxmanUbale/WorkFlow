@@ -77,4 +77,11 @@ public class GraphService {
 			return true;
 		}
 	}
+	
+	public JSONObject getWorkflow(String name) {
+		Query query=new Query();
+		query.addCriteria(Criteria.where("name").is(name));
+		JsonGraph jgraph=(JsonGraph) mongoTemplate.find(query,JsonGraph.class,COLLECTION);
+		return jgraph.getJgraph();
+	}
 }
