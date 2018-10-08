@@ -61,6 +61,7 @@ $scope.json=JSON.stringify($scope.workflow, undefined, 4);
 $scope.content=$scope.json;
 
 
+//Workflow create function
 	$scope.createWorkflow=function(){
 		console.log($scope.workflow.name);
 		alert("here");
