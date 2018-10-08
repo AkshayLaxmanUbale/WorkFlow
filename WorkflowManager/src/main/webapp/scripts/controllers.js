@@ -49,7 +49,7 @@ app.controller('DiagramCtrl',['$scope', 'fileUpload','$q' , function($scope,file
 $scope.workflow={ "class": "go.GraphLinksModel",
 		  "linkFromPortIdProperty": "fromPort",
 		  "linkToPortIdProperty": "toPort",
-		  
+		  "name":"",
 		  "nodeDataArray": [ 
 
 		{"key":-1, "category":"Start", "loc":"175 0", "text":"Start","config":{"className":"Main","name":"Start","file":null},"input":{"url":"https://api.myjson.com/bins/lbzsc"},"output":[]},

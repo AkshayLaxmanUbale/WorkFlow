@@ -1,10 +1,15 @@
 package com.workflow.service;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -21,7 +26,7 @@ public class GraphService {
 	@Autowired
 	MongoTemplate mongoTemplate;
 	final String COLLECTION="jsonGraph";
-	public String extract(String name) {
+	public LogicGraph extract(String name) {
 		Query query=new Query();
 		query.addCriteria(Criteria.where("name").is(name));
 		JSONObject jgraph=(mongoTemplate.findOne(query, JsonGraph.class, COLLECTION)).getJgraph();
@@ -37,12 +42,39 @@ public class GraphService {
 			nodes.add(temp);
 		}
 		lgraph.setNodes(nodes);
-		return lgraph.getId();
+		return lgraph;
 	}
 	public void saveGraph(JSONObject jgraph) {
 		JsonGraph jsonGraph=new JsonGraph();
 		jsonGraph.setName((String)jgraph.get("name"));
 		jsonGraph.setJgraph(jgraph);
 		mongoTemplate.insert(jsonGraph, COLLECTION);
+	}
+	public boolean newWorkFlow(String name) {
+		Query query=new Query();
+		query.addCriteria(Criteria.where("name").is(name));
+		if(mongoTemplate.find(query,JsonGraph.class,COLLECTION)!=null) {
+			return false;
+		}
+		else {
+			JsonGraph jgraph=new JsonGraph();
+			JSONParser parser=new JSONParser();
+			
+			jgraph.setName(name);
+			try {
+				jgraph.setJgraph((JSONObject)(parser.parse(new FileReader("/WorkflowManager/dagInit.json"))));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			mongoTemplate.insert(jgraph, COLLECTION);
+			return true;
+		}
 	}
 }
