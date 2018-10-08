@@ -18,7 +18,6 @@ public class GraphController {
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST, headers = "Accept=application/json")
 	public boolean addGraph(@RequestBody JSONObject jgraph) {
-		graphService.extract(jgraph);
 		graphService.saveGraph(jgraph);
 		return true;
 	}

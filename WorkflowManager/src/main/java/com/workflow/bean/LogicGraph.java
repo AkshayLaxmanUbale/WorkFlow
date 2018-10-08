@@ -27,13 +27,13 @@ public class LogicGraph {
 	public void setNodes(List<Node> nodes) {
 		this.nodes = nodes;
 	}
-	public Map<String, String> getInput(int ind) {
+	public Map<String, Object> getInput(int ind) {
 		return nodes.get(ind).getInput();
 	}
-	public Map<String, String> getOutput(int ind) {
+	public Map<String, Object> getOutput(int ind) {
 		return nodes.get(ind).getOutput();
 	}
-	public Map<String, String> getConfig(int ind) {
+	public Map<String, Object> getConfig(int ind) {
 		return nodes.get(ind).getConfig();
 	}
 }
