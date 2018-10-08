@@ -23,8 +23,34 @@
 <script type="text/javascript" src="scripts/services.js"></script>
 <script type="text/javascript" src="scripts/controllers.js"></script>
 </head>
-<body ng-app="WorkflowManager">
-<div ng-controller="DiagramCtrl" ng-init="init();">
+<body ng-app="WorkflowManager"  ng-controller="DiagramCtrl" ng-init="init();">
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">WorkFLow Manager</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Workflow
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" data-toggle="modal" data-target="#newWorkflowModal">New</a>
+        <a class="dropdown-item" href="#">Load</a>
+       
+      </div>
+    </li>
+    </ul>
+  </div> 
+</nav>
+<div>
 <div id="sample">
   <div style="width: 100%; display: flex; justify-content: space-between">
     <div id="myPaletteDiv" style="width: 100px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
@@ -42,6 +68,8 @@
   </pre>
   <button onclick="printDiagram()">Print Diagram Using SVG</button>
 </div>
+
+<div ng-include="'files/newWorkflowModal.html'"></div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -78,9 +106,9 @@
     </div>
   </div>
 </div>
-<script>
 
-</script>
+<!-- Modal End -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </div>

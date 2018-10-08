@@ -21,7 +21,7 @@ app.controller('FormController', function($scope,$http, $location) {
     }
     )
   };
-  $scope.loadData("https://api.myjson.com/bins/70bwc");
+  $scope.loadData("https://api.myjson.com/bins/1ct6a4");
 $scope.onSubmit = function(form) {
     // First we broadcast an event so all fields validate themselves
     $scope.$broadcast('schemaFormValidate');
@@ -46,7 +46,8 @@ $scope.onSubmit = function(form) {
 app.controller('DiagramCtrl',['$scope', 'fileUpload','$q' , function($scope,fileUpload,$http,$location) {
   $scope.schema=null;
   $scope.form=[];
-$scope.workflow={ "class": "go.GraphLinksModel",
+$scope.workflow={ 
+		"name":"","class": "go.GraphLinksModel",
 		  "linkFromPortIdProperty": "fromPort",
 		  "linkToPortIdProperty": "toPort",
 		  "name":"",
@@ -60,6 +61,11 @@ $scope.json=JSON.stringify($scope.workflow, undefined, 4);
 $scope.content=$scope.json;
 
 
+//Workflow create function
+	$scope.createWorkflow=function(){
+		console.log($scope.workflow.name);
+		alert("here");
+	}
 	  // Show the diagram's model in JSON format that the user may edit
 	  $scope.save=function() {
 	    $scope.workflow = $scope.myDiagram.model; //.toJson();

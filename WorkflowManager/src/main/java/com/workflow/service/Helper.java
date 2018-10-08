@@ -4,7 +4,7 @@ import com.workflow.component.*;
 
 public class Helper {
 	
-	public Object getObjectByClassName(String classname) {
+	public Component getObjectByClassName(String classname) {
 		Object object = null;
 		try {
 			Class<?> cls = Class.forName(classname);
@@ -20,7 +20,12 @@ public class Helper {
 			e.printStackTrace();
 		}
 		
-		return object;
+		return (Component)object;
+	}
+
+	public String getConfig(String componentName) {
+		return getObjectByClassName(componentName).getConfig();
+		
 	}
 	
 }
