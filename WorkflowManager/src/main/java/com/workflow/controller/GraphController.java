@@ -17,10 +17,13 @@ public class GraphController {
 	GraphService graphService;
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST, headers = "Accept=application/json")
-	public boolean addGraph(@RequestBody JSONObject jgraph) {
+	public boolean saveWorkflow(@RequestBody JSONObject jgraph) {
 		graphService.saveGraph(jgraph);
 		return true;
 	}
 	
-	
+	@RequestMapping(value="/create", method=RequestMethod.POST, headers = "Accept=application/json")
+	public boolean createWorkflow(@RequestBody String name) {
+		return graphService.newWorkflow(name);
+	}
 }

@@ -50,7 +50,7 @@ public class GraphService {
 		jsonGraph.setJgraph(jgraph);
 		mongoTemplate.insert(jsonGraph, COLLECTION);
 	}
-	public boolean newWorkFlow(String name) {
+	public boolean newWorkflow(String name) {
 		Query query=new Query();
 		query.addCriteria(Criteria.where("name").is(name));
 		if(mongoTemplate.find(query,JsonGraph.class,COLLECTION)!=null) {
