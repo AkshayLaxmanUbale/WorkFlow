@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.workflow.bean.JsonGraph;
 import com.workflow.bean.LogicGraph;
+import com.workflow.bean.Node;
 
 @Service("graphSService")
 public class GraphService {

@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.workflow.service.Node;
+import com.workflow.bean.Node;
 
 @Document(collection="logicGraph")
 public class LogicGraph {

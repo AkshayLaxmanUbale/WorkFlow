@@ -1,4 +1,4 @@
-package com.workflow.service;
+package com.workflow.bean;
 
 import java.util.HashMap;
 import java.util.Map;
