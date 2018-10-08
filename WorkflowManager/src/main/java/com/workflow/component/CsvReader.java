@@ -45,5 +45,11 @@ public class CsvReader implements Component{
 		System.out.println("Reading from CSV " +  output);
 		return output;
 	}
+
+	@Override
+	public String getConfig() {
+		// TODO Auto-generated method stub
+		return "{\\\"schema\\\":{\\\"type\\\":\\\"object\\\",\\\"title\\\":\\\"Comment\\\",\\\"properties\\\":{\\\"filename\\\":{\\\"title\\\":\\\"filename\\\",\\\"type\\\":\\\"string\\\"}},\\\"required\\\":[\\\"filename\\\"]},\\\"form\\\":[\\\"filename\\\",{\\\"type\\\":\\\"submit\\\",\\\"style\\\":\\\"btn-info\\\",\\\"title\\\":\\\"OK\\\"}]}";
+	}
 	
 }
