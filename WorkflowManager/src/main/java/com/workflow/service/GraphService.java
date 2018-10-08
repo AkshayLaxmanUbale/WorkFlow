@@ -9,14 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
+import com.workflow.bean.JsonGraph;
 import com.workflow.bean.LogicGraph;
 
-@Service("graphExtractService")
-public class GraphExtract {
+@Service("graphSService")
+public class GraphService {
 	
 	@Autowired
 	MongoTemplate mongoTemplate;
-	final String COLLECTION="logicGraph";
+	final String L_COLLECTION="logicGraph";
+	final String J_COLLECTION="jsonGraph";
 	public String extract(JSONObject jgraph) {
 		LogicGraph lgraph=new LogicGraph();
 		ArrayList<Node> nodes=new ArrayList<Node>();
@@ -30,7 +32,13 @@ public class GraphExtract {
 			nodes.add(temp);
 		}
 		lgraph.setNodes(nodes);
-		mongoTemplate.insert(lgraph, COLLECTION);
+		mongoTemplate.insert(lgraph, L_COLLECTION);
 		return lgraph.getId();
+	}
+	public void saveGraph(JSONObject jgraph) {
+		JsonGraph jsonGraph=new JsonGraph();
+		jsonGraph.setName((String)jgraph.get("name"));
+		jsonGraph.setJgraph(jgraph);
+		mongoTemplate.insert(jsonGraph, J_COLLECTION);
 	}
 }
