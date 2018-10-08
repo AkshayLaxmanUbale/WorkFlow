@@ -53,27 +53,19 @@ $scope.workflow={ "class": "go.GraphLinksModel",
 		  "nodeDataArray": [ 
 
 		{"key":-1, "category":"Start", "loc":"175 0", "text":"Start","config":{"className":"Main","name":"Start","file":null},"input":{"url":"https://api.myjson.com/bins/lbzsc"},"output":[]},
-		{"key":1, "loc":"175 100", "text":"CSVReader","config":{"className":"CSVReader","name":"CSV Reader","file":null},"input":{"url":"https://api.myjson.com/bins/lbzsc"},"output":[]},
-		{"key":2, "loc":"175 200", "text":"MongoMapper","config":{"className":"MongoMapper","name":"CSV Reader","file":null},"input":{"url":"https://api.myjson.com/bins/lbzsc"},"output":[]},
-		{"key":3, "loc":"175 290", "text":"MongoDb","config":{"className":"MongoDb","name":"CSV Reader","file":null},"input":{"url":"https://api.myjson.com/bins/lbzsc"},"output":[]},
 		{"key":-2, "category":"End", "loc":"175 407", "text":"Stop!","config":{"className":"Main","name":"End","file":null},"input":{"url":"https://api.myjson.com/bins/lbzsc"},"output":[]}
 		 ],
-		  "linkDataArray": [ 
-		{"from":1, "to":2, "fromPort":"B", "toPort":"T", "points":[175,115.9357009887696,175,125.9357009887696,175,150.00000000000003,174.99999999999994,150.00000000000003,174.99999999999994,174.06429901123045,174.99999999999994,184.06429901123045]},
-		{"from":2, "to":3, "fromPort":"B", "toPort":"T", "points":[174.99999999999994,215.9357009887695,174.99999999999994,225.9357009887695,174.99999999999994,245.00000000000003,174.99999999999986,245.00000000000003,174.99999999999986,264.06429901123056,174.99999999999986,274.06429901123056]},
-		{"from":-1, "to":1, "fromPort":"B", "toPort":"T", "points":[175,24.267174476800964,175,34.26717447680096,175,54.165736744015746,175,54.165736744015746,175,74.06429901123053,175,84.06429901123053]},
-		{"from":3, "to":-2, "fromPort":"B", "toPort":"T", "points":[174.99999999999986,305.9357009887696,174.99999999999986,315.9357009887696,174.99999999999986,340.19438522693724,175.0000000000001,340.19438522693724,175.0000000000001,364.45306946510493,175.0000000000001,374.45306946510493]}
-		 ]};
+		  "linkDataArray": [  ]};
 $scope.json=JSON.stringify($scope.workflow, undefined, 4);
 $scope.content=$scope.json;
 
 
 	  // Show the diagram's model in JSON format that the user may edit
-	  function save() {
-	    $scope.workflow = $scope.myDiagram.model.toJson();
+	  $scope.save=function() {
+	    $scope.workflow = $scope.myDiagram.model; //.toJson();
 	    $scope.myDiagram.isModified = false;
 	  }
-	  function load() {
+	  $scope.load=function() {
 	    $scope.myDiagram.model = go.Model.fromJson($scope.workflow);
 	  }
 	  
@@ -196,7 +188,7 @@ $scope.content=$scope.json;
 
 		    // define the Node templates for regular nodes
 
-		    $scope.myDiagram.nodeTemplateMap.add("",  // the default category
+		    $scope.myDiagram.nodeTemplateMap.add("CSVReader",  // the default category
 		      GO(go.Node, "Table", nodeStyle(),
 		        // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
 		        GO(go.Panel, "Auto",
@@ -219,7 +211,54 @@ $scope.content=$scope.json;
 		        makePort("B", go.Spot.Bottom, go.Spot.BottomSide, true, false)
 		      ));
 
-		    $scope.myDiagram.nodeTemplateMap.add("Conditional",
+		    $scope.myDiagram.nodeTemplateMap.add("MongoDb",  // the default category
+		      GO(go.Node, "Table", nodeStyle(),
+		        // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
+		        GO(go.Panel, "Auto",
+		          GO(go.Shape, "Rectangle",
+		            { fill: "#00A9C9", strokeWidth: 0 },
+		            new go.Binding("figure", "figure")),
+		          GO(go.TextBlock, textStyle(),
+		            {
+		              margin: 8,
+		              maxSize: new go.Size(160, NaN),
+		              wrap: go.TextBlock.WrapFit,
+		              editable: false
+		            },
+		            new go.Binding("text").makeTwoWay())
+		        ),
+		        // four named ports, one on each side:
+		        makePort("T", go.Spot.Top, go.Spot.TopSide, false, true),
+		        makePort("L", go.Spot.Left, go.Spot.LeftSide, true, true),
+		        makePort("R", go.Spot.Right, go.Spot.RightSide, true, true),
+		        makePort("B", go.Spot.Bottom, go.Spot.BottomSide, true, false)
+		      ));
+
+		     $scope.myDiagram.nodeTemplateMap.add("MongoMapper",  // the default category
+		      GO(go.Node, "Table", nodeStyle(),
+		        // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
+		        GO(go.Panel, "Auto",
+		          GO(go.Shape, "Rectangle",
+		            { fill: "#00A9C9", strokeWidth: 0 },
+		            new go.Binding("figure", "figure")),
+		          GO(go.TextBlock, textStyle(),
+		            {
+		              margin: 8,
+		              maxSize: new go.Size(160, NaN),
+		              wrap: go.TextBlock.WrapFit,
+		              editable: false
+		            },
+		            new go.Binding("text").makeTwoWay())
+		        ),
+		        // four named ports, one on each side:
+		        makePort("T", go.Spot.Top, go.Spot.TopSide, false, true),
+		        makePort("L", go.Spot.Left, go.Spot.LeftSide, true, true),
+		        makePort("R", go.Spot.Right, go.Spot.RightSide, true, true),
+		        makePort("B", go.Spot.Bottom, go.Spot.BottomSide, true, false)
+		      ));
+
+		   /* 
+		   $scope.myDiagram.nodeTemplateMap.add("Conditional",
 		      GO(go.Node, "Table", nodeStyle(),
 		        // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
 		        GO(go.Panel, "Auto",
@@ -241,6 +280,8 @@ $scope.content=$scope.json;
 		        makePort("R", go.Spot.Right, go.Spot.Right, true, true),
 		        makePort("B", go.Spot.Bottom, go.Spot.Bottom, true, false)
 		      ));
+
+*/
 
 		    $scope.myDiagram.nodeTemplateMap.add("Start",
 		      GO(go.Node, "Table", nodeStyle(),
@@ -269,7 +310,7 @@ $scope.content=$scope.json;
 		        makePort("L", go.Spot.Left, go.Spot.Left, false, true),
 		        makePort("R", go.Spot.Right, go.Spot.Right, false, true)
 		      ));
-
+/*
 		    $scope.myDiagram.nodeTemplateMap.add("Comment",
 		      GO(go.Node, "Auto", nodeStyle(),
 		        GO(go.Shape, "File",
@@ -287,7 +328,7 @@ $scope.content=$scope.json;
 		          new go.Binding("text").makeTwoWay())
 		        // no ports, because no links are allowed to connect with a comment
 		      ));
-
+*/
 
 		    // replace the default Link template in the linkTemplateMap
 		    $scope.myDiagram.linkTemplate =
@@ -338,7 +379,7 @@ $scope.content=$scope.json;
 		    $scope.myDiagram.toolManager.linkingTool.temporaryLink.routing = go.Link.Orthogonal;
 		    $scope.myDiagram.toolManager.relinkingTool.temporaryLink.routing = go.Link.Orthogonal;
 
-		    load();  // load an initial diagram from some JSON text
+		    $scope.load();  // load an initial diagram from some JSON text
 
 		    // initialize the Palette that is on the left side of the page
 		    myPalette =
@@ -348,10 +389,10 @@ $scope.content=$scope.json;
 		          nodeTemplateMap: $scope.myDiagram.nodeTemplateMap,  // share the templates used by $scope.myDiagram
 		          model: new go.GraphLinksModel([  // specify the contents of the Palette
 		            { category: "Start", text: "Start" },
-		            { text: "Step" },
-		            { category: "Conditional", text: "???" },
-		            { category: "End", text: "End" },
-		            { category: "Comment", text: "Comment" }
+		            { category:"MongoDb",text: "MongoDb" },
+		            { category:"CSVReader",text: "CSVReader" ,"config":{"className":"CSVReader","name":"CSV Reader","file":null}},
+		            {category:"MongoMapper", text:"MongoMapper"},
+		            { category: "End", text: "End" }
 		          ])
 		        });
 		  }; // end init
