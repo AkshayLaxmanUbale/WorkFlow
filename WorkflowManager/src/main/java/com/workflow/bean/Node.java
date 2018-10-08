@@ -4,25 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Node {
-	private Map<String,String> config= new HashMap<String,String>();
-	private Map<String,String> input= new HashMap<String,String>();
-	private Map<String,String> output= new HashMap<String,String>();
-	public Map<String, String> getConfig() {
+	private Map<String,Object> config= new HashMap<String,Object>();
+	private Map<String,Object> input= new HashMap<String,Object>();
+	private Map<String,Object> output= new HashMap<String,Object>();
+	public Map<String, Object> getConfig() {
 		return config;
 	}
-	public Map<String, String> getInput() {
+	public Map<String, Object> getInput() {
 		return input;
 	}
-	public Map<String, String> getOutput() {
+	public Map<String, Object> getOutput() {
 		return output;
 	}
-	public void setConfig(Map<String, String> config) {
+	public void setConfig(Map<String, Object> config) {
 		this.config = config;
 	}
-	public void setInput(Map<String, String> input) {
+	public void setInput(Map<String, Object> input) {
 		this.input = input;
 	}
-	public void setOutput(Map<String, String> output) {
+	public void setOutput(Map<String, Object> output) {
 		this.output = output;
 	}
 	

@@ -21,7 +21,7 @@ app.controller('FormController', function($scope,$http, $location) {
     }
     )
   };
-  $scope.loadData("https://api.myjson.com/bins/lbzsc");
+  $scope.loadData("https://api.myjson.com/bins/70bwc");
 $scope.onSubmit = function(form) {
     // First we broadcast an event so all fields validate themselves
     $scope.$broadcast('schemaFormValidate');
@@ -49,7 +49,7 @@ app.controller('DiagramCtrl',['$scope', 'fileUpload','$q' , function($scope,file
 $scope.workflow={ "class": "go.GraphLinksModel",
 		  "linkFromPortIdProperty": "fromPort",
 		  "linkToPortIdProperty": "toPort",
-		  
+		  "name":"",
 		  "nodeDataArray": [ 
 
 		{"key":-1, "category":"Start", "loc":"175 0", "text":"Start","config":{"className":"Main","name":"Start","file":null},"input":{"url":"https://api.myjson.com/bins/lbzsc"},"output":[]},
